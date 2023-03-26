@@ -1,3 +1,4 @@
+import { Requests } from "@/services/request";
 import { Suspense } from "react";
 import Loading from "./loading";
 
@@ -17,4 +18,19 @@ export default function Layout({ params }: UserDetailsProps) {
       <Page params={params} />
     </Suspense>
   )
+}
+
+interface User {
+  id: string
+  login: string
+  created_at: string
+  html_url: string
+}
+
+export async function generateStaticParams() {
+  const usersDetailsGithub: User[] = await Requests.get('https://api.github.com/users')
+
+  return usersDetailsGithub.map((user) => ({
+    login: user.login,
+  }))
 }
