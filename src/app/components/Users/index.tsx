@@ -2,12 +2,12 @@ import Link from "next/link"
 
 import styles from './styles.module.css'
 
-type Users = {
+export type Users = {
   id: string
   login: string
 }
 
-interface UsersProps {
+export interface UsersProps {
   users: Users[]
 }
 
@@ -29,7 +29,8 @@ export function Users({ users }: UsersProps) {
               <td>{id}</td>
               <td>{login}</td>
               <td>
-                <Link href={`/userDetails/${login}`} target="_blank">Link</Link>
+                <Link href={`/userDetails/${encodeURIComponent(login)}`} target="_blank">user details</Link>
+                {/* <Link href={{ pathname: '/userDetails/[login]', query: { login } }} target="_blank">user details</Link> */}
               </td>
             </tr>
           ))
