@@ -1,7 +1,7 @@
 import { Requests } from "@/services/request";
 import Link from "next/link";
 
-export default async function UserDetails({ login }:  { login: string } ) {
+export default async function UserDetails({ params: { login } }: { params: { login: string } }) {
   const userDetailsGithub = await Requests.get(`https://api.github.com/users/${login}`)
 
   return (

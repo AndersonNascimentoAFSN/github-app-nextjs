@@ -10,12 +10,11 @@ interface UserDetailsProps {
 }
 
 export default function Layout({ params }: UserDetailsProps) {
-  const { login } = params;
-  
+
   return (
     <Suspense fallback={<Loading />}>
-        {/* @ts-expect-error Server Component */} 
-      <Page login={login}/>
+      {/* @ts-expect-error Server Component */}
+      <Page params={params} />
     </Suspense>
   )
 }
