@@ -15,15 +15,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header>Xablau</header>
+        <header>Header Layout</header>
         
-        <Link href={'/'} shallow>Home</Link>
+        {/* <Link href={'/'} shallow>Home</Link>
 
-        <Link href={'/dashboard'} shallow>Dashboard</Link>
+        <Link href={'/dashboard'} shallow>Dashboard</Link> */}
         
         {children}
         
-        <footer>Feito com muito amor</footer>
+        <footer>Footer Layout</footer>
       </body>
     </html>
   )

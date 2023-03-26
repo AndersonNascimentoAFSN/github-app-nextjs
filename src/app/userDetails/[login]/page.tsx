@@ -1,3 +1,4 @@
+import { Requests } from "@/services/request";
 import Link from "next/link";
 
 interface UserDetailsProps {
@@ -5,12 +6,7 @@ interface UserDetailsProps {
 }
 
 export default async function UserDetails({ login }: UserDetailsProps) {
-  async function getUserDetailsGithub({ login }: { login: string }) {
-    const users = await fetch(`https://api.github.com/users/${login}`);
-    return users.json();
-  }
-
-  const userDetailsGithub = await getUserDetailsGithub({ login })
+  const userDetailsGithub = await Requests.get(`https://api.github.com/users/${login}`)
 
   return (
     <div>

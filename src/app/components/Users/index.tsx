@@ -13,34 +13,28 @@ interface UsersProps {
 
 export function Users({ users }: UsersProps) {
   return (
-    <div>
-      <h1>Users</h1>
+    <table className={styles["customers"]}>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Username</th>
+          <th>Link</th>
+        </tr>
+      </thead>
 
-      <div>
-        <table className={styles["customers"]}>
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Username</th>
-              <th>Link</th>
+      <tbody>
+        {
+          users.map(({ id, login }) => (
+            <tr key={id}>
+              <td>{id}</td>
+              <td>{login}</td>
+              <td>
+                <Link href={`/userDetails/${login}`} target="_blank">Link</Link>
+              </td>
             </tr>
-          </thead>
-
-          <tbody>
-            {
-              users.map(({ id, login }) => (
-                <tr key={id}>
-                  <td>{id}</td>
-                  <td>{login}</td>
-                  <td>
-                    <Link href={`/userDetails/${login}`} target="_blank">Link</Link>
-                  </td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table>
-      </div>
-    </div>
+          ))
+        }
+      </tbody>
+    </table>
   )
 }
