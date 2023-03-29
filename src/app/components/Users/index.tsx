@@ -29,7 +29,7 @@ export function Users({ users }: UsersProps) {
               <td>{id}</td>
               <td>{login}</td>
               <td>
-                <Link href={`/userDetails/${encodeURIComponent(login)}`} target="_blank">user details</Link>
+                <Link scroll={false} href={`/userDetails/${encodeURIComponent(login)}`} target="_blank">user details</Link>
                 {/* <Link href={{ pathname: '/userDetails/[login]', query: { login } }} target="_blank">user details</Link> */}
               </td>
             </tr>

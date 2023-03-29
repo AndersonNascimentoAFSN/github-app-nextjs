@@ -1,21 +1,14 @@
+import { ReactNode, Suspense } from "react";
+
 import { Requests } from "@/services/request";
-import { Suspense } from "react";
+
 import Loading from "./loading";
 
-import Page from './page'
-
-interface UserDetailsProps {
-  params: {
-    login: string
-  }
-}
-
-export default function Layout({ params }: UserDetailsProps) {
+export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <Suspense fallback={<Loading />}>
-      {/* @ts-expect-error Server Component */}
-      <Page params={params} />
+      {children}
     </Suspense>
   )
 }

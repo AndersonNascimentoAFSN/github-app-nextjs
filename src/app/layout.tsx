@@ -17,9 +17,8 @@ export default function RootLayout({
       <body>
         <header>Header Layout</header>
         
-        {/* <Link href={'/'} shallow>Home</Link>
-
-        <Link href={'/dashboard'} shallow>Dashboard</Link> */}
+        <Link href={'/'}>Home</Link>
+        <Link href={'/dashboard'}>Dashboard</Link>
         
         {children}
         

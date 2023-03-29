@@ -3,8 +3,7 @@ import { Users } from "./components/Users";
 
 
 export default async function Home() {
-  const usersGithub = await Requests.get('https://api.github.com/users?since=0')
-  console.log(usersGithub.length);
+  const usersGithub = await Requests.get('https://api.github.com/users?since=0', /*   */)
 
   return (
     <main>
@@ -15,3 +14,18 @@ export default async function Home() {
     </main>
   )
 }
+
+// interface User {
+//   id: string
+//   login: string
+//   created_at: string
+//   html_url: string
+// }
+
+// export async function getStaticProps() {
+//   const usersDetailsGithub: User[] = await Requests.get('https://api.github.com/users?since=0')
+
+//   return {
+//     users: usersDetailsGithub
+//   }
+// }
