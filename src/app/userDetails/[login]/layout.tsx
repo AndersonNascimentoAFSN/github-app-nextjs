@@ -1,8 +1,8 @@
 import { ReactNode, Suspense } from "react";
 
-import { Requests } from "@/services/request";
-
 import Loading from "./loading";
+import { request } from "@/services/request";
+import { User } from "@/@types/user";
 
 export default function Layout({ children }: { children: ReactNode }) {
 
@@ -13,17 +13,10 @@ export default function Layout({ children }: { children: ReactNode }) {
   )
 }
 
-interface User {
-  id: string
-  login: string
-  created_at: string
-  html_url: string
-}
-
 export async function generateStaticParams() {
-  const usersDetailsGithub: User[] = await Requests.get('https://api.github.com/users')
+  const users = await request<User[]>({ url: 'https://api.github.com/users?since=0' })
 
-  return usersDetailsGithub.map((user) => ({
+  return users.map((user) => ({
     login: user.login,
   }))
 }

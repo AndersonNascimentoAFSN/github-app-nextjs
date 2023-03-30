@@ -1,15 +1,14 @@
-import { Requests } from "@/services/request";
+import { useGetUsers } from "@/hooks/useGetUsers";
 import { Users } from "./components/Users";
 
-
 export default async function Home() {
-  const usersGithub = await Requests.get('https://api.github.com/users?since=0', /*   */)
+  const { users } = await useGetUsers()
 
   return (
     <main>
       <div>
         <h1>Users Github</h1>
-        <Users users={usersGithub} />
+        <Users users={users} />
       </div>
     </main>
   )
